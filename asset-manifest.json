@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/imagenesFree/static/css/main.bd586728.chunk.css",
+    "main.js": "/imagenesFree/static/js/main.7eecb630.chunk.js",
+    "main.js.map": "/imagenesFree/static/js/main.7eecb630.chunk.js.map",
+    "runtime-main.js": "/imagenesFree/static/js/runtime-main.3f8b7dff.js",
+    "runtime-main.js.map": "/imagenesFree/static/js/runtime-main.3f8b7dff.js.map",
+    "static/js/2.05897285.chunk.js": "/imagenesFree/static/js/2.05897285.chunk.js",
+    "static/js/2.05897285.chunk.js.map": "/imagenesFree/static/js/2.05897285.chunk.js.map",
+    "static/js/3.29f85ba9.chunk.js": "/imagenesFree/static/js/3.29f85ba9.chunk.js",
+    "static/js/3.29f85ba9.chunk.js.map": "/imagenesFree/static/js/3.29f85ba9.chunk.js.map",
+    "index.html": "/imagenesFree/index.html",
+    "static/css/main.bd586728.chunk.css.map": "/imagenesFree/static/css/main.bd586728.chunk.css.map",
+    "static/js/2.05897285.chunk.js.LICENSE.txt": "/imagenesFree/static/js/2.05897285.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3f8b7dff.js",
+    "static/js/2.05897285.chunk.js",
+    "static/css/main.bd586728.chunk.css",
+    "static/js/main.7eecb630.chunk.js"
+  ]
+}
