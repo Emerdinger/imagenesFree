@@ -11,7 +11,8 @@ class App extends Component {
     imagenes: [],
     total: '',
     pagina: '',
-    totalPaginas: ''
+    totalPaginas: '',
+    tipo: ''
   }
 
   focusScrollMethod = () => {
@@ -59,19 +60,29 @@ class App extends Component {
   }
 
   consultaApi = () => {
-    const url = `https://pixabay.com/api/?key=22733076-0602da3a0161809ddc1004b90&q=${this.state.termino}&per_page=30&page=${this.state.pagina}`;
+    if (this.state.tipo === 'foto') {
+      const url = `https://pixabay.com/api/?key=22733076-0602da3a0161809ddc1004b90&q=${this.state.termino}&per_page=30&page=${this.state.pagina}`;
+      // consultar los datos
+      fetch(url).then(respuesta => respuesta.json()).then(result => {
+        const pTotal = Math.trunc(result.total / 30);
+        this.setState({ imagenes: result.hits, total: result.total, totalPaginas: pTotal })
+      });
+    } else {
+      const url = `https://pixabay.com/api/videos/?key=22733076-0602da3a0161809ddc1004b90&q=${this.state.termino}&per_page=30&page=${this.state.pagina}`
+      // consultar los datos
+      fetch(url).then(respuesta => respuesta.json()).then(result => {
+        const pTotal = Math.trunc(result.total / 30);
+        this.setState({ imagenes: result.hits, total: result.total, totalPaginas: pTotal })
+      });
+    }
 
-    // consultar los datos
-    fetch(url).then(respuesta => respuesta.json()).then(result => {
-      const pTotal = Math.trunc(result.total/30);
-      this.setState({ imagenes: result.hits, total: result.total, totalPaginas: pTotal })
-    });
   }
 
-  datoBusqueda = (termino) => {
+  datoBusqueda = (termino, tipo) => {
     this.setState({
       termino,
-      pagina: 1
+      pagina: 1,
+      tipo
     }, () => {
       this.consultaApi();
     })
