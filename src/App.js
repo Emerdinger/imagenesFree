@@ -92,7 +92,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="jumbotron">
-          <h1 className="text-center mt-5">Buscador de imágenes gratuitas</h1>
+          <h1 className="text-center mt-5">Buscador de multimedia gratuito</h1>
           <Buscador
             datosBusqueda={this.datoBusqueda}
           />
