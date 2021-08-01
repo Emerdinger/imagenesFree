@@ -61,19 +61,28 @@ class App extends Component {
 
   consultaApi = () => {
     if (this.state.tipo === 'foto') {
-      const url = `https://pixabay.com/api/?key=22733076-0602da3a0161809ddc1004b90&q=${this.state.termino}&per_page=30&page=${this.state.pagina}`;
-      // consultar los datos
-      fetch(url).then(respuesta => respuesta.json()).then(result => {
-        const pTotal = Math.trunc(result.total / 30);
-        this.setState({ imagenes: result.hits, total: result.total, totalPaginas: pTotal })
-      });
+      try {
+        const url = `https://pixabay.com/api/?key=22733076-0602da3a0161809ddc1004b90&q=${this.state.termino}&per_page=30&page=${this.state.pagina}`;
+        // consultar los datos
+        fetch(url).then(respuesta => respuesta.json()).then(result => {
+          const pTotal = Math.trunc(result.total / 30);
+          this.setState({ imagenes: result.hits, total: result.total, totalPaginas: pTotal })
+        });
+      } catch (error) {
+        console.log('Algo salio mal');
+      }
+
     } else {
-      const url = `https://pixabay.com/api/videos/?key=22733076-0602da3a0161809ddc1004b90&q=${this.state.termino}&per_page=30&page=${this.state.pagina}`
       // consultar los datos
-      fetch(url).then(respuesta => respuesta.json()).then(result => {
-        const pTotal = Math.trunc(result.total / 30);
-        this.setState({ imagenes: result.hits, total: result.total, totalPaginas: pTotal })
-      });
+      try {
+        const url = `https://pixabay.com/api/videos/?key=22733076-0602da3a0161809ddc1004b90&q=${this.state.termino}&per_page=30&page=${this.state.pagina}`
+        fetch(url).then(respuesta => respuesta.json()).then(result => {
+          const pTotal = Math.trunc(result.total / 30);
+          this.setState({ imagenes: result.hits, total: result.total, totalPaginas: pTotal })
+        });
+      } catch (error) {
+        console.log('Algo salio mal');
+      }
     }
 
   }
@@ -106,6 +115,7 @@ class App extends Component {
             paginaSiguiente={this.paginaSiguiente}
             pagina={this.state.pagina}
             totalPaginas={this.state.totalPaginas}
+            tipo={this.state.tipo}
           />
         </div>
       </div>

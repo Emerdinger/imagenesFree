@@ -18,7 +18,8 @@ class Fotos extends Component {
                 </div>
             );
         };
-        if (imagenes[0].type === 'photo') {
+        if (this.props.tipo === 'foto') {
+
             return (
                 <React.Fragment>
                     <div>
@@ -41,12 +42,14 @@ class Fotos extends Component {
                     <Paginacion
                         paginaAnterior={this.props.paginaAnterior}
                         paginaSiguiente={this.props.paginaSiguiente}
+                        pagina={this.props.pagina}
+                        totalPaginas={this.props.totalPaginas}
                     />
                 </React.Fragment>
             )
         }
 
-        if (imagenes[0].type === 'film' || imagenes[0].type === 'animation') {
+        if (this.props.tipo === 'video') {
             return (
                 <React.Fragment>
                     <div>

@@ -6,9 +6,10 @@ const Video = (props) => {
     return (
         <div className="card-fotos col-12 col-md-6 mb-3">
             <div className="card">
-                <video width="100%" height="250" controls>
-                    <source src={videos.tiny.url} type="video/mp4" alt={tags} />
-                </video>
+                <video src={videos.tiny.url} title={tags} width="100%" height="281" controls webkitallowfullscreen="false" mozallowfullscreen="false" allowFullScreen={false} type="video/mp4"></video>
+                {/* <video width="100%" height="250" controls>
+                        <source src={videos.tiny.url} type="video/mp4" alt={tags} />
+                    </video> */}
                 <div className="card-body">
                     <div className="row">
                         <div className="col-12 text-center">
