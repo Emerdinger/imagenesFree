@@ -24,6 +24,7 @@ class Fotos extends Component {
                     <div className="text-center mt-3">
                         <h1>Búsqueda: {this.props.termino}</h1>
                         <p>Se han encontrado {this.props.total} resultados</p>
+                        <p>Página {this.props.pagina} de {this.props.totalPaginas}</p>
                     </div>
                     <div className="col-12 p-5 row">
                         {

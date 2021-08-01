@@ -10,11 +10,13 @@ class App extends Component {
     termino: '',
     imagenes: [],
     total: '',
-    pagina: ''
+    pagina: '',
+    totalPaginas: ''
   }
 
-  focusScrollMethod = function getFocus() {
-    document.getElementById("busqueda").focus({ preventScroll: false });
+  focusScrollMethod = () => {
+    const scroll = document.querySelector(".jumbotron");
+    scroll.scrollIntoView('smooth', 'end');
   }
 
   paginaAnterior = () => {
@@ -60,7 +62,10 @@ class App extends Component {
     const url = `https://pixabay.com/api/?key=22733076-0602da3a0161809ddc1004b90&q=${this.state.termino}&per_page=30&page=${this.state.pagina}`;
 
     // consultar los datos
-    fetch(url).then(respuesta => respuesta.json()).then(result => this.setState({ imagenes: result.hits, total: result.total }));
+    fetch(url).then(respuesta => respuesta.json()).then(result => {
+      const pTotal = Math.trunc(result.total/30);
+      this.setState({ imagenes: result.hits, total: result.total, totalPaginas: pTotal })
+    });
   }
 
   datoBusqueda = (termino) => {
@@ -77,7 +82,6 @@ class App extends Component {
       <div className="container">
         <div className="jumbotron">
           <h1 className="text-center mt-5">Buscador de imágenes gratuitas</h1>
-          <button id="busqueda" type="button" style={{opacity: 0}}></button>
           <Buscador
             datosBusqueda={this.datoBusqueda}
           />
@@ -89,6 +93,8 @@ class App extends Component {
             total={this.state.total}
             paginaAnterior={this.paginaAnterior}
             paginaSiguiente={this.paginaSiguiente}
+            pagina={this.state.pagina}
+            totalPaginas={this.state.totalPaginas}
           />
         </div>
       </div>
